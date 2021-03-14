@@ -1,5 +1,5 @@
 module.exports = function toReadable(n) {
-    newStr = ''
+    let newStr = ''
     if (String(n).split('').length === 3) {
         newStr += getKeyByValue(numbers, +String(n).split('')[0]) + ' hundred '
         if (n % 100 === 0) {
@@ -9,16 +9,16 @@ module.exports = function toReadable(n) {
         }
     }
     if (n < 20) {
-        newStr += getKeyByValue(numbers, +(String(n)))
+        newStr += getKeyByValue(numbers, n)
     } else if (n % 10 == 0) {
-        newStr += getKeyByValue(decades, +(String(n)))
+        newStr += getKeyByValue(decades, n)
     } else {
         newStr += getKeyByValue(decades, +(String(n).split('')[0] * 10)) + ' ' + getKeyByValue(numbers, +(String(n).split('')[1]))
     }
     return newStr;
 }
 
-numbers = {
+const numbers = {
     zero: 0,
     one: 1,
     two: 2,
@@ -41,7 +41,7 @@ numbers = {
     nineteen: 19
 }
 
-decades = {
+const decades = {
     twenty: 20,
     thirty: 30,
     forty: 40,
